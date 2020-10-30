@@ -130,8 +130,10 @@ class DidAgi
 
         //check if is a call betewen 2 sipcounts.
         if (strlen($MAGNUS->accountcode) > 0) {
-            $sql      = "SELECT * FROM pkg_sip WHERE name = '$this->did' LIMIT 1";
-            $modelSip = $agi->query($sql)->fetch(PDO::FETCH_OBJ);
+            $sql             = "SELECT * FROM pkg_sip WHERE name = '$this->did' LIMIT 1";
+            $modelSip        = $agi->query($sql)->fetch(PDO::FETCH_OBJ);
+            $this->voip_call = 3;
+            return;
         }
 
         if (!isset($modelSip->id)) {
