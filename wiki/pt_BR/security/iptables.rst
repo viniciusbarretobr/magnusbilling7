@@ -10,17 +10,17 @@ Regras Básicas
 ::
      
   	iptablesF
-	iptablesA INPUT -p icmp --icmp-type echo-request -j ACCEPT
-	iptablesA OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT
-	iptablesA INPUT -i lo -j ACCEPT
-	iptablesA INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-	iptablesA INPUT -p tcp --dport 22 -j ACCEPT
-	iptablesP INPUT DROP
-	iptablesP FORWARD DROP
-	iptablesP OUTPUT ACCEPT
-	iptablesA INPUT -p udp -m udp --dport 5060 -j ACCEPT
-	iptablesA INPUT -p udp -m udp --dport 10000:20000 -j ACCEPT
-	iptablesA INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+	iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+	iptables -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT
+	iptables -A INPUT -i lo -j ACCEPT
+	iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+	iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+	iptables -P INPUT DROP
+	iptables -P FORWARD DROP
+	iptables -P OUTPUT ACCEPT
+	iptables -A INPUT -p udp -m udp --dport 5060 -j ACCEPT
+	iptables -A INPUT -p udp -m udp --dport 10000:20000 -j ACCEPT
+	iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 
 Regras Opcionais
 ^^^^^^^^^^^^^^^^
@@ -28,7 +28,7 @@ Regras Opcionais
 | OPENVPN: ``iptables -A INPUT -p udp --dport 1194 -j ACCEPT`` 
 | ICMP: ``iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT``
 | IAX: ``iptables -A INPUT -p udp -m udp --dport 4569 -j ACCEPT``
-| HTTPS: ``iptablesA INPUT -p tcp -m tcp --dport 443 -j ACCEPT``
+| HTTPS: ``iptables -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT``
 
 Scanner Amigável
 ^^^^^^^^^^^^^^^^^
